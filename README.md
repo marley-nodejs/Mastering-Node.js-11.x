@@ -1,4 +1,4 @@
-# Mastering Node.js 12.x [Video]
+# Mastering Node.js 11.x [Video]
 
 ### 1 - The Node.js Concurrency Model
 
@@ -18,6 +18,14 @@
 - 11 - Working with Observables
 
 ### 3 - Mastering Express.js
+
+- 12 - Creating a Controller with Express.Router
+- 13 - Creating a Service
+- 14 - Essential Middleware
+- 14 - Essential Middleware
+- 15 - Model Validation
+- 16 - Handling and Reporting Errors
+
 ### 4 - Connecting to MySQL
 ### 5 - Node.js Microservices with PM2
 ### 6 - Authentication
