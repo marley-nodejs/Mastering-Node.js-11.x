@@ -27,6 +27,13 @@
 - 16 - Handling and Reporting Errors
 
 ### 4 - Connecting to MySQL
+
+- 17 - Install and run MySQL
+- 18 - Installing Sequelize
+- 19 - Creating Sequelize Models
+- 20 - Utilizing Migrations
+- 21 - Finishing the Service
+
 ### 5 - Node.js Microservices with PM2
 ### 6 - Authentication
 ### 7 - Caching with Redis
