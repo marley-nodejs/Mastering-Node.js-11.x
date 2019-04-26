@@ -44,6 +44,15 @@
 - 27 - Designing an API Gateway
 
 ### 6 - Authentication
+
+- 28 - Creating a User Model
+- 29 - Password Hashing
+- 30 - Introduction to JSON Web Tokens
+- 31 - The Sign-Up Endpoint
+- 32 - The Sign-In Endpoint
+- 33 - Installing Passport
+- 34 - Authentication Middleware
+
 ### 7 - Caching with Redis
 
 ---
