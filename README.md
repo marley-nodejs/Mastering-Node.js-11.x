@@ -35,6 +35,14 @@
 - 21 - Finishing the Service
 
 ### 5 - Node.js Microservices with PM2
+
+- 22 - The Database per Service Pattern
+- 23 - Managing Processes with PM2
+- 24 - Communicating using REST
+- 25 - Communicating using AMQP
+- 26 - CQRS and Event Sourcing
+- 27 - Designing an API Gateway
+
 ### 6 - Authentication
 ### 7 - Caching with Redis
 
