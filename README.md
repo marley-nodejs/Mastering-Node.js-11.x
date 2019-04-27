@@ -55,6 +55,11 @@
 
 ### 7 - Caching with Redis
 
+- 35 - Introduction to Redis
+- 36 - Connecting to Redis
+- 37 - Creating a Caching Service
+- 38 - Invalidating the Cache
+
 ---
 
 **Marley**
