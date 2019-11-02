@@ -11,11 +11,11 @@
 ### 2 - Functional Reactive Programming
 
 - 06 - Introduction to Functional Programming
-- 07 - Replacing for Loops with forEach
-- 08 - Filtering Arrays
-- 09 - Map and Reduce
+- 07 - Replacing for Loops with forEach (Example2.2)
+- 08 - Filtering Arrays (Example2.3)
+- 09 - Map and Reduce (Example2.4)
 - 10 - Introduction to Streams with RxJS
-- 11 - Working with Observables
+- 11 - Working with Observables (Example2.6)
 
 ### 3 - Mastering Express.js
 
