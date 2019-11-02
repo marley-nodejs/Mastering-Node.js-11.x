@@ -4,9 +4,9 @@
 
 - 01 - The Course Overview
 - 02 - The Event Loop
-- 03 - Mastering Promises
-- 04 - Using Util.promisify
-- 05 - Learning async_await
+- 03 - Mastering Promises (Example1.2)
+- 04 - Using Util.promisify (Example1.3)
+- 05 - Learning async/await (Example1.4)
 
 ### 2 - Functional Reactive Programming
 
@@ -21,7 +21,6 @@
 
 - 12 - Creating a Controller with Express.Router
 - 13 - Creating a Service
-- 14 - Essential Middleware
 - 14 - Essential Middleware
 - 15 - Model Validation
 - 16 - Handling and Reporting Errors
@@ -65,3 +64,6 @@
 **Marley**
 
 <a href="https://jsdev.org">jsdev.org</a>
+
+Any questions on eng: https://t.me/jsdev_org  
+Любые вопросы на русском: https://t.me/jsdev_ru
