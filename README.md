@@ -1,4 +1,4 @@
-# Mastering Node.js 11.x [Video]
+# [Packt, Dimitris Loukas] Mastering Node.js 11.x. [February 28, 2019, ENG]
 
 ### 1 - The Node.js Concurrency Model
 
@@ -45,19 +45,50 @@ $ curl \
 
 ```
 $ docker run --name subscription-as-a-service \
-  -e MYDSQL_ROOT_PASSWORD=123456789 \
+  -e MYSQL_ROOT_PASSWORD=123456789 \
   -p 6606:3306 \
   -d mysql:5.7
 ```
 
 ```
-CREATE SCHEMA SubscriptionAsAService CHARACTER SET utf8mb4;
+$ docker ps
+$ docker exec -it <docker_container_id> bash
+
+# mysql -uroot -p
+Enter password: [123456789]
+
+// Delete ALL users who are not root:
+mysql> DELETE FROM mysql.user WHERE NOT (host="localhost" AND user="root");
+
+// Remove anonymous access to the database(s):
+mysql> DELETE FROM mysql.user WHERE User = '';
+
+mysql> CREATE USER 'user1'@'%' IDENTIFIED BY '123456789';
+
+mysql> GRANT USAGE ON *.* TO 'user1'@'%' IDENTIFIED BY '123456789' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+
+mysql> GRANT USAGE ON *.* TO 'user1'@'%' WITH GRANT OPTION;
+
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'user1'@'%';
+
+mysql> FLUSH PRIVILEGES;
+
+```
+
+```
+mysql> CREATE SCHEMA SubscriptionAsAService CHARACTER SET utf8mb4;
+
+mysql> exit;
 ```
 
 - 18 - Installing Sequelize
 
 ```
-$ npm install -g sequlize-cli
+$ npm install -g sequelize-cli
+
+$ npm install --save mysql2
+$ npm install --save sequelize
+
 ```
 
 ```
@@ -65,8 +96,75 @@ $ sequelize init
 ```
 
 - 19 - Creating Sequelize Models
+
+```
+$ sequelize model:generate --name Plan --attributes name:string,price:float,type:string,userId:integer --force
+```
+
+```
+$ sequelize model:generate --name Subscription --attributes planId:integer,coupon:string,cardNumber:string,holderName:string,expirationDate:string,cvv:string --force
+```
+
+Sequalize will replace original code. Need to add code from previous project to files models\plan.js and models\subscription.js
+
 - 20 - Utilizing Migrations
+
+```
+$ sequelize db:migrate
+
+// to undo
+// $ sequelize db:migrate:undo:all
+```
+
 - 21 - Finishing the Service
+
+```
+$ curl \
+-d '{
+    "name": "Standarad Plan",
+    "price": "49",
+    "type": "monthly",
+    "userId": 1
+    }' \
+-H "Content-Type: application/json" \
+-X POST localhost:3000/api/plans \
+| python -m json.tool
+```
+
+```
+$ curl \
+-H "Content-Type: application/json" \
+-X GET localhost:3000/api/plans/1 \
+| python -m json.tool
+```
+
+```
+$ sequelize db:migrate:undo:all
+$ sequelize db:migrate
+```
+
+```
+$ curl \
+-d '{
+    "planId": 1,
+    "cardNumber": "123456712345678",
+    "holderName": "John Doe",
+    "coupon": "4444",
+    "expirationDate": "12/22/2020",
+    "cvv": "123",
+    "userId": 1
+    }' \
+-H "Content-Type: application/json" \
+-X POST localhost:3000/api/subscriptions \
+| python -m json.tool
+```
+
+```
+$ curl \
+-H "Content-Type: application/json" \
+-X GET localhost:3000/api/subscriptions/1 \
+| python -m json.tool
+```
 
 ### 5 - Node.js Microservices with PM2
 
