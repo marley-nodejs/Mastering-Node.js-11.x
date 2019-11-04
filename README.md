@@ -23,12 +23,47 @@
 - 13 - Creating a Service
 - 14 - Essential Middleware
 - 15 - Model Validation
+
+```
+$ curl \
+-d '{
+    "name": "Plan",
+    "price": "40",
+    "type": "monthly",
+    "userId": 1
+    }' \
+-H "Content-Type: application/json" \
+-X POST localhost:3000/api/plans \
+| python -m json.tool
+```
+
 - 16 - Handling and Reporting Errors
 
 ### 4 - Connecting to MySQL
 
 - 17 - Install and run MySQL
+
+```
+$ docker run --name subscription-as-a-service \
+  -e MYDSQL_ROOT_PASSWORD=123456789 \
+  -p 6606:3306 \
+  -d mysql:5.7
+```
+
+```
+CREATE SCHEMA SubscriptionAsAService CHARACTER SET utf8mb4;
+```
+
 - 18 - Installing Sequelize
+
+```
+$ npm install -g sequlize-cli
+```
+
+```
+$ sequelize init
+```
+
 - 19 - Creating Sequelize Models
 - 20 - Utilizing Migrations
 - 21 - Finishing the Service
