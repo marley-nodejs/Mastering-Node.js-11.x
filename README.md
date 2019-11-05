@@ -346,6 +346,31 @@ https://www.express-gateway.io/
     Basic (default pipeline with proxy)
 
 <br/>
+    $ pm2 kill
+    $ pm2 start ./ecosystem.config.js
+
+<br/>
+
+    $ cd main-gateway/
+    $ node server.js
+
+<br/>
+
+```
+$ curl \
+-H "Content-Type: application/json" \
+-X GET localhost:8080/api/plans \
+| python -m json.tool
+```
+
+```
+$ curl \
+-H "Content-Type: application/json" \
+-X GET localhost:8080/api/subscriptions \
+| python -m json.tool
+```
+
+<br/>
 
 ### 6 - Authentication
 
