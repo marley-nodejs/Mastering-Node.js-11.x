@@ -177,7 +177,16 @@ $ docker run --name plans-db \
   -d mysql:5.7
 ```
 
+```
+$ docker ps
+$ docker exec -it <docker_container_id> bash
+
+# mysql -uroot -p
+Enter password: [123456789]
+
 mysql> CREATE SCHEMA PlansDb CHARACTER SET 'utf8mb4';
+mysql> exit
+```
 
 ```
 $ docker run --name subscriptions-db \
@@ -186,11 +195,90 @@ $ docker run --name subscriptions-db \
   -d mysql:5.7
 ```
 
+```
+$ docker ps
+$ docker exec -it <docker_container_id> bash
+
+# mysql -uroot -p
+Enter password: [123456789]
+
 mysql> CREATE SCHEMA SubscriptionsDb CHARACTER SET 'utf8mb4';
+mysql> exit
+```
 
 <br/>
 
 - 23 - Managing Processes with PM2
+
+      $ npm install --save express body-parser chalk cors helmet joi morgan mysql2 sequelize sequelize-cli
+
+      $ sequelize init
+
+      $ npm install -g pm2
+
+<br/>
+
+    $ cd ./plans-service
+    $ sequelize db:migrate
+
+<br/>
+
+    $ cd ./subscriptions-service
+    $ sequelize db:migrate
+
+<br/>
+
+    $ pm2 start ./ecosystem.config.js
+
+    $ pm2 list
+    $ pm2 logs
+    $ pm2 flush
+
+```
+$ curl \
+-d '{
+    "name": "Standarad Plan",
+    "price": "49",
+    "type": "monthly",
+    "userId": 1
+    }' \
+-H "Content-Type: application/json" \
+-X POST localhost:3001 \
+| python -m json.tool
+```
+
+```
+$ curl \
+-H "Content-Type: application/json" \
+-X GET localhost:3001/ \
+| python -m json.tool
+```
+
+```
+$ curl \
+-d '{
+    "planId": 1,
+    "cardNumber": "123456712345678",
+    "holderName": "John Doe",
+    "coupon": "4444",
+    "expirationDate": "12/22/2020",
+    "cvv": "123",
+    "userId": 1
+    }' \
+-H "Content-Type: application/json" \
+-X POST localhost:3002/ \
+| python -m json.tool
+```
+
+```
+$ curl \
+-H "Content-Type: application/json" \
+-X GET localhost:3002/ \
+| python -m json.tool
+```
+
+<br/>
+
 - 24 - Communicating using REST
 - 25 - Communicating using AMQP
 - 26 - CQRS and Event Sourcing
