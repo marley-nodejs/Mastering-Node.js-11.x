@@ -169,6 +169,27 @@ $ curl \
 ### 5 - Node.js Microservices with PM2
 
 - 22 - The Database per Service Pattern
+
+```
+$ docker run --name plans-db \
+  -e MYSQL_ROOT_PASSWORD=123456789 \
+  -p 3307:3306 \
+  -d mysql:5.7
+```
+
+mysql> CREATE SCHEMA PlansDb CHARACTER SET 'utf8mb4';
+
+```
+$ docker run --name subscriptions-db \
+  -e MYSQL_ROOT_PASSWORD=123456789 \
+  -p 3308:3306 \
+  -d mysql:5.7
+```
+
+mysql> CREATE SCHEMA SubscriptionsDb CHARACTER SET 'utf8mb4';
+
+<br/>
+
 - 23 - Managing Processes with PM2
 - 24 - Communicating using REST
 - 25 - Communicating using AMQP
