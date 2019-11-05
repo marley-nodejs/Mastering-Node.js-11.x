@@ -331,6 +331,22 @@ Some errors in log file for payments-service.
 - 26 - CQRS and Event Sourcing
 - 27 - Designing an API Gateway
 
+<br/>
+
+![Application](/img/pic-05-03.png?raw=true)
+
+https://www.express-gateway.io/
+
+    $ npm install -g express-gateway
+
+    $ eg gateway create
+
+    ? What's the name of your Express Gateway? [main-gateway]
+    ? Where would you like to install your Express Gateway? [main-gateway]
+    Basic (default pipeline with proxy)
+
+<br/>
+
 ### 6 - Authentication
 
 - 28 - Creating a User Model
