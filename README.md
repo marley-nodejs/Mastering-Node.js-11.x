@@ -277,10 +277,57 @@ $ curl \
 | python -m json.tool
 ```
 
+    $ pm2 kill
+
 <br/>
 
 - 24 - Communicating using REST
-- 25 - Communicating using AMQP
+
+      $ cd Section_5/app/subscriptions-service/
+      $ npm install --save axios
+
+* 25 - Communicating using AMQP
+
+create accoun on --> cloudamqp.com
+
+      $ cd ../payments-service/
+      $ npm install --save amqplib
+
+      $ cd subscriptions-service/
+      $ npm install --save amqplib
+
+<br/>
+
+![Application](/img/pic-05-01.png?raw=true)
+
+<br/>
+
+![Application](/img/pic-05-01.png?raw=true)
+
+<br/>
+
+```
+$ curl \
+-d '{
+    "planId": 1,
+    "cardNumber": "125456712345678",
+    "holderName": "John Doe",
+    "coupon": "4444",
+    "expirationDate": "12/22/2020",
+    "cvv": "123",
+    "userId": 1
+    }' \
+-H "Content-Type: application/json" \
+-X POST localhost:3002/ \
+| python -m json.tool
+```
+
+Possible something not work properly.
+
+Some errors in log file for payments-service.
+
+<br/>
+
 - 26 - CQRS and Event Sourcing
 - 27 - Designing an API Gateway
 
