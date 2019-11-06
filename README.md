@@ -555,7 +555,34 @@ localhost:6380> expire user#1 10
 ```
 
 - 37 - Creating a Caching Service
+
+```
+$ cd ./plans-service/
+$ npm install --save redis
+```
+
 - 38 - Invalidating the Cache
+
+```
+$ pm2 start ./ecosystem.config.js
+$ node ./main-gateway/server.js
+$ redis-cli -h localhost -p 6380
+```
+
+<br/>
+
+```
+$ curl \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJlbWFpbCI6ImRvZUBnbWFpbC5jb20iLCJjcmVhdGVkQXQiOiIyMDE5LTExLTA2VDA1OjU2OjA4LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE5LTExLTA2VDA1OjU2OjA4LjAwMFoifSwiaWF0IjoxNTczMDI4ODU4LCJpc3MiOiJzYWFzIiwic3ViIjoiMSJ9.VMlKYpvUEgAlyjSSBOeYnGW18JQaamduMV4EhpmdMIk" \
+-X GET localhost:8080/api/plans \
+| python -m json.tool
+```
+
+```
+localhost:6380> keys *
+1) "user#1"
+```
 
 ---
 

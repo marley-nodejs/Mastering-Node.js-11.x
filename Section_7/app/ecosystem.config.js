@@ -21,7 +21,10 @@ module.exports = {
         MYSQL_DB: 'PlansDb',
         PORT: 3001,
         TOKEN_ISSUER,
-        AUTH_SECRET
+        AUTH_SECRET,
+        REDIS_HOST: 'localhost',
+        REDIS_PORT: '6380',
+        REDIS_PASSWORD: ''
       },
       env_production: {
         NODE_ENV: 'production'
