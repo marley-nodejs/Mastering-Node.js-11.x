@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     'User',
     {
       firstName: DataTypes.STRING,
-      LastName: DataTypes.STRING,
+      lastName: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING
     },
@@ -28,4 +28,11 @@ module.exports.UserValidationSchema = Joi.object().keys({
     .required()
     .min(6)
     .max(32)
+});
+
+module.exports.LoginValidationSchema = Joi.object().keys({
+  email: Joi.string()
+    .email()
+    .required(),
+  password: Joi.string().required()
 });

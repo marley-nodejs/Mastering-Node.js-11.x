@@ -236,6 +236,8 @@ mysql> exit
     $ pm2 logs
     $ pm2 flush
 
+<br/>
+
 ```
 $ curl \
 -d '{
@@ -249,12 +251,16 @@ $ curl \
 | python -m json.tool
 ```
 
+<br/>
+
 ```
 $ curl \
 -H "Content-Type: application/json" \
 -X GET localhost:3001/ \
 | python -m json.tool
 ```
+
+<br/>
 
 ```
 $ curl \
@@ -272,6 +278,8 @@ $ curl \
 | python -m json.tool
 ```
 
+<br/>
+
 ```
 $ curl \
 -H "Content-Type: application/json" \
@@ -279,11 +287,15 @@ $ curl \
 | python -m json.tool
 ```
 
+<br/>
+
     $ pm2 kill
 
 <br/>
 
 - 24 - Communicating using REST
+
+<br/>
 
 ```
 $ cd Section_5/app/subscriptions-service/
@@ -412,15 +424,54 @@ mysql> exit
 ```
 
 ```
-$ sequelize model:generate --name User --attributes firstName:string,LastName:string,email:string,password:string
+$ sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string,password:string
+
+$ sequelize db:migrate
+
 ```
 
 <br/>
 
 - 29 - Password Hashing
 - 30 - Introduction to JSON Web Tokens
+
+```
+$ npm install --save jsonwebtoken
+$ npm install --save bcrypt
+```
+
 - 31 - The Sign-Up Endpoint
 - 32 - The Sign-In Endpoint
+
+```
+$ pm2 start ./ecosystem.config.js
+$ node ./main-gateway/server.js
+```
+
+```
+$ curl \
+-d '{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "doe@gmail.com",
+    "password": "12345678"
+    }' \
+-H "Content-Type: application/json" \
+-X POST localhost:8080/api/auth/sign-up \
+| python -m json.tool
+```
+
+```
+$ curl \
+-d '{
+    "email": "doe@gmail.com",
+    "password": "12345678"
+    }' \
+-H "Content-Type: application/json" \
+-X POST localhost:8080/api/auth/sign-in \
+| python -m json.tool
+```
+
 - 33 - Installing Passport
 - 34 - Authentication Middleware
 

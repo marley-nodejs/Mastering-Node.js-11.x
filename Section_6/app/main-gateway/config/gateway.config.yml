@@ -7,11 +7,16 @@ apiEndpoints:
   subscriptions-service:
     host: '*'
     paths: ['/api/subscriptions/*', '/api/subscriptions']
+  auth-service:
+    host: '*'
+    paths: ['/api/auth/*', 'api/auth']
 serviceEndpoints:
   plans-service-endpoint:
     url: http://localhost:3001/
   subscriptions-service-endpoint:
     url: http://localhost:3002/
+  auth-service-endpoint:
+    url: http://localhost:3003/
 policies:
   - proxy
 pipelines:
@@ -33,3 +38,12 @@ pipelines:
             serviceEndpoint: subscriptions-service-endpoint
             changeOrigin: true # localhost:3002 -> localhost:8080
             stripPath: true # localhost:8080/api/subscriptions -> localhost:4001(/api/subscriptions -> removed)
+  auth-service-pipeline:
+    apiEndpoints:
+      - auth-service
+    policies:
+      - proxy:
+          action:
+            serviceEndpoint: auth-service-endpoint
+            changeOrigin: true
+            stripPath: true
