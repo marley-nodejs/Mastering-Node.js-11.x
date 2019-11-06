@@ -448,6 +448,8 @@ $ pm2 start ./ecosystem.config.js
 $ node ./main-gateway/server.js
 ```
 
+<br/>
+
 ```
 $ curl \
 -d '{
@@ -461,6 +463,8 @@ $ curl \
 | python -m json.tool
 ```
 
+<br/>
+
 ```
 $ curl \
 -d '{
@@ -472,8 +476,54 @@ $ curl \
 | python -m json.tool
 ```
 
+<br/>
+
 - 33 - Installing Passport
+
+```
+$ cd ./plans-service/
+$ npm install --save passport passport-jwt
+
+$ cd ./subscriptions-service/
+$ npm install --save passport passport-jwt
+```
+
 - 34 - Authentication Middleware
+
+```
+$ pm2 start ./ecosystem.config.js
+$ node ./main-gateway/server.js
+```
+
+<br/>
+
+```
+$ curl \
+-d '{
+    "email": "doe@gmail.com",
+    "password": "12345678"
+    }' \
+-H "Content-Type: application/json" \
+-X POST localhost:8080/api/auth/sign-in \
+| python -m json.tool
+```
+
+<br/>
+
+```
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJlbWFpbCI6ImRvZUBnbWFpbC5jb20iLCJjcmVhdGVkQXQiOiIyMDE5LTExLTA2VDA1OjU2OjA4LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE5LTExLTA2VDA1OjU2OjA4LjAwMFoifSwiaWF0IjoxNTczMDI4ODU4LCJpc3MiOiJzYWFzIiwic3ViIjoiMSJ9.VMlKYpvUEgAlyjSSBOeYnGW18JQaamduMV4EhpmdMIk"
+
+```
+
+```
+$ curl \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJlbWFpbCI6ImRvZUBnbWFpbC5jb20iLCJjcmVhdGVkQXQiOiIyMDE5LTExLTA2VDA1OjU2OjA4LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE5LTExLTA2VDA1OjU2OjA4LjAwMFoifSwiaWF0IjoxNTczMDI4ODU4LCJpc3MiOiJzYWFzIiwic3ViIjoiMSJ9.VMlKYpvUEgAlyjSSBOeYnGW18JQaamduMV4EhpmdMIk" \
+-X GET localhost:8080/api/plans \
+| python -m json.tool
+```
+
+<br/>
 
 ### 7 - Caching with Redis
 
