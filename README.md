@@ -166,6 +166,8 @@ $ curl \
 | python -m json.tool
 ```
 
+<br/>
+
 ### 5 - Node.js Microservices with PM2
 
 - 22 - The Database per Service Pattern
@@ -283,10 +285,12 @@ $ curl \
 
 - 24 - Communicating using REST
 
-      $ cd Section_5/app/subscriptions-service/
-      $ npm install --save axios
+```
+$ cd Section_5/app/subscriptions-service/
+$ npm install --save axios
+```
 
-* 25 - Communicating using AMQP
+- 25 - Communicating using AMQP
 
 create accoun on --> cloudamqp.com
 
@@ -346,8 +350,11 @@ https://www.express-gateway.io/
     Basic (default pipeline with proxy)
 
 <br/>
-    $ pm2 kill
-    $ pm2 start ./ecosystem.config.js
+
+```
+$ pm2 kill
+$ pm2 start ./ecosystem.config.js
+```
 
 <br/>
 
