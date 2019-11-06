@@ -382,6 +382,41 @@ $ curl \
 ### 6 - Authentication
 
 - 28 - Creating a User Model
+
+```
+$ cd app/auth-service
+
+$ npm init -y
+
+$ npm install --save express body-parser chalk cors dotenv helmet joi morgan mysql2 sequelize sequelize-cli
+
+$ sequelize init
+```
+
+```
+$ docker run --name auth-db \
+  -e MYSQL_ROOT_PASSWORD=123456789 \
+  -p 3309:3306 \
+  -d mysql:5.7
+```
+
+```
+$ docker ps
+$ docker exec -it <docker_container_id> bash
+
+# mysql -uroot -p
+Enter password: [123456789]
+
+mysql> CREATE SCHEMA Users CHARACTER SET 'utf8mb4';
+mysql> exit
+```
+
+```
+$ sequelize model:generate --name User --attributes firstName:string,LastName:string,email:string,password:string
+```
+
+<br/>
+
 - 29 - Password Hashing
 - 30 - Introduction to JSON Web Tokens
 - 31 - The Sign-Up Endpoint
