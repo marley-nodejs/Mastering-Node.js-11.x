@@ -511,6 +511,8 @@ $ curl \
 <br/>
 
 ```
+recieved
+
 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJlbWFpbCI6ImRvZUBnbWFpbC5jb20iLCJjcmVhdGVkQXQiOiIyMDE5LTExLTA2VDA1OjU2OjA4LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE5LTExLTA2VDA1OjU2OjA4LjAwMFoifSwiaWF0IjoxNTczMDI4ODU4LCJpc3MiOiJzYWFzIiwic3ViIjoiMSJ9.VMlKYpvUEgAlyjSSBOeYnGW18JQaamduMV4EhpmdMIk"
 
 ```
@@ -528,7 +530,30 @@ $ curl \
 ### 7 - Caching with Redis
 
 - 35 - Introduction to Redis
+
+<br/>
+
+![Application](/img/pic-07-01.png?raw=true)
+
 - 36 - Connecting to Redis
+
+```
+$ docker run --name plans-cache -p 6380:6379 -d redis
+$ redis-cli -h localhost -p 6380
+
+localhost:6380> hset user#1 plans "[{'name': 'standard', 'price': '49'}]"
+
+localhost:6380> hget user#1 plans
+"[{'name': 'standard', 'price': '49'}]"
+
+localhost:6380> hset user#2 plans "[{'name': 'startup', 'price': '20'}]"
+
+localhost:6380> keys *
+
+localhost:6380> expire user#1 10
+
+```
+
 - 37 - Creating a Caching Service
 - 38 - Invalidating the Cache
 
